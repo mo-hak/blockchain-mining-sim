@@ -31,7 +31,7 @@ class Visualizer:
 
     def plot_metrics(self):
         """Generate plots for all metrics."""
-        plt.style.use('seaborn')
+        plt.style.use('default')
         fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(15, 10))
 
         # Plot miner scores

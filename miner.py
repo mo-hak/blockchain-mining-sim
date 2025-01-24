@@ -1,6 +1,6 @@
 import random
 from typing import List, Optional, Any
-from task import Task
+from task import Task, TaskType
 
 class Miner:
     def __init__(self, miner_id: int):
@@ -11,12 +11,30 @@ class Miner:
         self.penalties = 0
         self.tokens = 0.0
         self.current_task: Optional[Task] = None
+        self.error_probability = random.uniform(0.1, 0.3)  # 10-30% chance of error
 
     def execute_task(self, task: Task) -> Any:
         """Execute the assigned task and return the result."""
         self.current_task = task
-        result = task.execute()
-        return result
+        correct_result = task.execute()
+        
+        # Introduce potential errors based on error probability
+        if random.random() < self.error_probability:
+            if task.task_type == TaskType.ADDITION:
+                return correct_result + random.randint(-10, 10)
+            elif task.task_type == TaskType.MULTIPLICATION:
+                return correct_result * random.uniform(0.9, 1.1)
+            elif task.task_type == TaskType.SORTING:
+                # Randomly swap two elements in the sorted list
+                result = list(correct_result)
+                if len(result) > 1:
+                    i, j = random.sample(range(len(result)), 2)
+                    result[i], result[j] = result[j], result[i]
+                return result
+            elif task.task_type == TaskType.SEARCHING:
+                return not correct_result
+        
+        return correct_result
 
     def verify_task(self, task: Task, solution: Any) -> bool:
         """Verify another miner's solution."""
