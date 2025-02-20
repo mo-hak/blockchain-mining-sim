@@ -1,0 +1,159 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Mermaid Diagrams Viewer</title>
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+        <script>
+            mermaid.initialize({
+                startOnLoad: true,
+                theme: 'default',
+                securityLevel: 'loose',
+            });
+        </script>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 20px; }
+            .diagram { margin: 20px 0; padding: 20px; border: 1px solid #ccc; }
+            h1 { color: #333; }
+        </style>
+    </head>
+    <body>
+        <h1>Mermaid Diagrams Viewer</h1>
+    
+        <div class="diagram">
+            <h3>Diagram 1</h3>
+            <div class="mermaid">
+                graph TD
+    A[BlockchainSimulation] --> B[TaskDistributor]
+    A --> C[ValidationManager]
+    A --> D[Visualizer]
+    B --> E[Miners Pool]
+    C --> E
+    E --> F[Tasks Queue]
+    F --> G[Task Execution]
+    G --> H[Validation]
+    H --> I[Rewards/Penalties]
+    I --> J[Score Update]
+    J --> K[Token Distribution]
+    K --> L[Byzantine Detection]
+            </div>
+        </div>
+        
+        <div class="diagram">
+            <h3>Diagram 2</h3>
+            <div class="mermaid">
+                sequenceDiagram
+    participant S as Simulation
+    participant D as Distributor
+    participant M as Miner
+    participant V as Validators
+    participant R as RewardSystem
+
+    S->>D: Generate Task
+    D->>M: Assign Task
+    D->>V: Select Verifiers
+    M->>M: Execute Task
+    M->>V: Submit Solution
+    V->>V: Verify Solution
+    V->>R: Report Result
+    R->>M: Update Score/Tokens
+    R->>D: Update Selection Probabilities
+            </div>
+        </div>
+        
+        <div class="diagram">
+            <h3>Diagram 3</h3>
+            <div class="mermaid">
+                graph LR
+    A[System Size] --> B[20 Miners]
+    A --> C[1000 Tasks]
+    A --> D[3 Verifiers per Task]
+    B --> E[15% Byzantine Probability]
+    C --> F[10-100 Input Size]
+            </div>
+        </div>
+        
+        <div class="diagram">
+            <h3>Diagram 4</h3>
+            <div class="mermaid">
+                graph TD
+    A[Fairness Mechanisms] --> B[Score-based Selection]
+    A --> C[Renewable Energy Bonus]
+    A --> D[Equal Validation Weight]
+    B --> E[Dynamic Probability]
+    C --> F[Additional Rewards]
+    D --> G[Consensus Required]
+            </div>
+        </div>
+        
+        <div class="diagram">
+            <h3>Diagram 5</h3>
+            <div class="mermaid">
+                graph TD
+    A[Economic Incentives] --> B[Base Rewards]
+    A --> C[Renewable Bonus]
+    A --> D[Verification Rewards]
+    B --> E[Task Completion]
+    C --> F[Green Energy Usage]
+    D --> G[Validation Work]
+            </div>
+        </div>
+        
+        <div class="diagram">
+            <h3>Diagram 6</h3>
+            <div class="mermaid">
+                graph TD
+    A[Error Types] --> B[Addition: ±10]
+    A --> C[Multiplication: ±10%]
+    A --> D[Sorting: Swap Elements]
+    A --> E[Searching: Inverse Result]
+            </div>
+        </div>
+        
+        <div class="diagram">
+            <h3>Diagram 7</h3>
+            <div class="mermaid">
+                graph TD
+    A[Potential Improvements] --> B[Dynamic Difficulty]
+    A --> C[Variable Verifiers]
+    A --> D[Network Simulation]
+    A --> E[Computational Costs]
+    A --> F[Dynamic Byzantine Behavior]
+    A --> G[Smart Contracts]
+            </div>
+        </div>
+        
+        <div class="diagram">
+            <h3>Diagram 8</h3>
+            <div class="mermaid">
+                graph TD
+    A[Byzantine Detection] --> B[Error Rate Tracking]
+    B --> C[Probability Reduction]
+    C --> D[Task Distribution]
+    D --> E[Token Impact]
+            </div>
+        </div>
+        
+        <div class="diagram">
+            <h3>Diagram 9</h3>
+            <div class="mermaid">
+                graph TD
+    A[Renewable Energy] --> B[Bonus Rewards]
+    B --> C[Token Accumulation]
+    C --> D[Miner Ranking]
+            </div>
+        </div>
+        
+        <div class="diagram">
+            <h3>Diagram 10</h3>
+            <div class="mermaid">
+                graph TD
+    A[Task Execution] --> B[Verifier Selection]
+    B --> C[Consensus Check]
+    C --> D[Reward/Penalty]
+            </div>
+        </div>
+        
+    </body>
+    </html>
+    
