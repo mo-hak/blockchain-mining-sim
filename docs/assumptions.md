@@ -4,7 +4,8 @@
 
 ### 1. Byzantine Behavior
 - Only 1-3 miners can be Byzantine in the system
-- Byzantine miners have a fixed higher error rate (30%)
+- Byzantine miners have a 30% probability of error per task execution
+- Miners are classified as Byzantine when their error rate exceeds 20%
 - Byzantine behavior is persistent throughout the simulation
 - Byzantine miners cannot change their behavior dynamically
 

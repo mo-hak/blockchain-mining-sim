@@ -28,12 +28,12 @@ class Task:
     def _calculate_cost(self) -> float:
         """Calculate task cost based on time complexity and input size."""
         complexity_map = {
-            TaskType.ADDITION: 1,  # O(n)
-            TaskType.MULTIPLICATION: 1,  # O(n)
-            TaskType.SORTING: self.input_size,  # O(n log n)
-            TaskType.SEARCHING: 1,  # O(n)
+            TaskType.ADDITION: 0.5 * self.input_size,        # O(n)
+            TaskType.MULTIPLICATION: 1.0 * self.input_size,   # O(n)
+            TaskType.SORTING: self.input_size * (self.input_size),  # O(n log n) approximated
+            TaskType.SEARCHING: 2.0 * self.input_size,        # O(n)
         }
-        return complexity_map[self.task_type] * self.input_size
+        return complexity_map[self.task_type]
 
     def execute(self) -> Any:
         """Execute the task based on its type."""

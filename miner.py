@@ -10,7 +10,7 @@ class Miner:
     def __init__(self, miner_id: int):
         self.miner_id = miner_id
         self.score = 0.0
-        self.renewable_energy_proportion = random.uniform(0.0, 1.0)
+        self.renewable_energy_proportion = random.uniform(0.0, 0.5)  # Range between 0 (no renewable) and 0.5
         self.tasks_completed = 0
         self.penalties = 0
         self.tokens = 0.0

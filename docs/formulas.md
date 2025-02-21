@@ -1,92 +1,110 @@
 # Mathematical Models and Formulas
 
-## 1. Task Cost Calculation
-```
-Task Cost = Complexity Factor × Input Size
+## 1. Task Complexity and Cost
+Let \(n\) be the input size where \(n \in [10, 100]\), then for a task \(t\):
 
-Where:
-- Complexity Factor:
-  - Addition: O(n) = 1
-  - Multiplication: O(n) = 1
-  - Sorting: O(n log n) = input_size
-  - Searching: O(n) = 1
-```
+\[
+C(t) = \begin{cases}
+0.5n & \text{if } t \text{ is Addition} \\
+1.0n & \text{if } t \text{ is Multiplication} \\
+n^2 & \text{if } t \text{ is Sorting} \\
+2.0n & \text{if } t \text{ is Searching}
+\end{cases}
+\]
 
-## 2. Miner Selection Probability
-```
-Base Probability = Miner Score / Total Score of All Miners
+## 2. Miner Selection Model
+For a miner \(m\) with score \(s_m\) and error rate \(e_m\), the selection probability \(P(m)\) is:
 
-Adjusted Probability based on Byzantine behavior:
-- If error_rate > 20%: Probability = Base × 0.1 (90% reduction)
-- If error_rate > 15%: Probability = Base × 0.5 (50% reduction)
-- Otherwise: Probability = Base
-```
+\[
+P(m) = \begin{cases}
+0.1 \cdot \frac{s_m}{\sum_{i=1}^{M} s_i} & \text{if } e_m > 0.2 \\
+0.5 \cdot \frac{s_m}{\sum_{i=1}^{M} s_i} & \text{if } 0.15 < e_m \leq 0.2 \\
+\frac{s_m}{\sum_{i=1}^{M} s_i} & \text{otherwise}
+\end{cases}
+\]
 
-## 3. Reward Calculation
-```
-Base Reward = k × Task Cost
-Renewable Bonus = k × Task Cost × Miner's Renewable Energy Proportion × 0.5
-Total Reward = Base Reward + Renewable Bonus
+where \(M\) is the total number of miners.
 
-Where:
-- k is the reward multiplier (default = 1.0)
-- Renewable Energy Proportion is between 0 and 1
-```
+## 3. Reward System
+For a task \(t\) completed by miner \(m\), with reward multiplier \(k\):
 
-## 4. Verifier Reward
-```
-Verifier Reward = k × Task Cost × 0.5
-```
+Base Reward: \[R_b(t) = k \cdot C(t)\]
+Renewable Bonus: \[R_r(t,m) = k \cdot C(t) \cdot \alpha_m\]
+Total Reward: \[R_{total}(t,m) = R_b(t) + R_r(t,m)\]
 
-## 5. Penalty Calculation
-```
-Penalty = Task Cost
-Score After Penalty = max(0, Current Score - Penalty)
-```
+where \(\alpha_m \in [0, 0.5]\) is the renewable energy proportion of miner \(m\).
+
+## 4. Verification Model
+For a verifier \(v\) validating task \(t\):
+\[R_v(t) = k \cdot C(t) \cdot z\]
+where \(z\) is the verifier reward multiplier (default: 0.5).
+
+## 5. Penalty Model
+For an invalid solution:
+\[P(t) = C(t)\]
+Updated score: \[S_{new} = \max(0, S_{current} - P(t))\]
 
 ## 6. Byzantine Detection
-```
-Error Rate = Total Failures / Total Tasks Attempted
-Byzantine Threshold = 0.2 (20%)
+For a miner \(m\):
+\[E(m) = \frac{F_m}{T_m}\]
+where:
+- \(E(m)\) is the error rate
+- \(F_m\) is the number of failed tasks
+- \(T_m\) is the total tasks attempted
 
-A miner is considered Byzantine if:
-Error Rate > Byzantine Threshold
-```
+Byzantine classification:
+\[
+B(m) = \begin{cases}
+1 & \text{if } E(m) > 0.2 \\
+0 & \text{otherwise}
+\end{cases}
+\]
 
-## 7. Consensus Mechanism
-```
-Required Approvals = ceil(Number of Verifiers / 2)
-Task is validated if:
-Number of Approvals ≥ Required Approvals
-```
+Error probabilities:
+\[
+p_{error}(m) = \begin{cases}
+0.3 & \text{if } m \text{ is Byzantine} \\
+0.02 & \text{otherwise}
+\end{cases}
+\]
+
+## 7. Consensus Protocol
+For a task validation with \(V\) verifiers:
+\[
+\text{Required Approvals} = \left\lceil\frac{V}{2}\right\rceil
+\]
+
+Task validation state:
+\[
+Valid(t) = \begin{cases}
+1 & \text{if } Approvals \geq \left\lceil\frac{V}{2}\right\rceil \\
+0 & \text{otherwise}
+\end{cases}
+\]
 
 ## 8. Performance Metrics
+Success Rate: \[\eta = \frac{T_{successful}}{T_{total}}\]
 
-### Success Rate
-```
-Success Rate = Successful Tasks / Total Tasks Completed
-```
+Average Tasks per Type:
+\[
+\overline{T}_{normal} = \frac{\sum_{m \in M_{normal}} T_m}{|M_{normal}|}
+\]
+\[
+\overline{T}_{byzantine} = \frac{\sum_{m \in M_{byzantine}} T_m}{|M_{byzantine}|}
+\]
 
-### Average Tasks per Miner Type
-```
-Avg Tasks (Normal) = Total Tasks by Normal Miners / Number of Normal Miners
-Avg Tasks (Byzantine) = Total Tasks by Byzantine Miners / Number of Byzantine Miners
-```
+Token Distribution:
+\[
+\overline{\tau}_{normal} = \frac{\sum_{m \in M_{normal}} \tau_m}{|M_{normal}|}
+\]
+\[
+\overline{\tau}_{byzantine} = \frac{\sum_{m \in M_{byzantine}} \tau_m}{|M_{byzantine}|}
+\]
 
-### Token Distribution Impact
-```
-Avg Tokens (Normal) = Total Tokens of Normal Miners / Number of Normal Miners
-Avg Tokens (Byzantine) = Total Tokens of Byzantine Miners / Number of Byzantine Miners
-```
+where \(\tau_m\) represents the tokens of miner \(m\).
 
-## 9. Error Probability Distribution
-```
-Byzantine Miners: 30% chance of error per task
-Honest Miners: 2% chance of error per task
-```
-
-## 10. Task Generation
+## 9. Task Generation
 ```
 Input Size = random(10, 100)
 Task Type = random choice from [Addition, Multiplication, Sorting, Searching]
-``` 
+```

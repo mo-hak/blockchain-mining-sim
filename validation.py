@@ -3,8 +3,9 @@ from task import Task
 from miner import Miner
 
 class ValidationManager:
-    def __init__(self, k: float = 1.0):
+    def __init__(self, k: float = 1.0, z: float = 0.5):
         self.k = k  # Reward multiplier
+        self.z = z  # Verifier reward multiplier
 
     def validate_solution(self, task: Task, solution: Any) -> bool:
         """Validate a solution through verifier consensus."""
@@ -20,12 +21,12 @@ class ValidationManager:
     def calculate_miner_reward(self, task: Task) -> float:
         """Calculate reward for the task executor."""
         base_reward = self.k * task.cost
-        renewable_bonus = task.assigned_miner.renewable_energy_proportion * self.k * task.cost / 2
+        renewable_bonus = self.k * task.cost * task.assigned_miner.renewable_energy_proportion
         return base_reward + renewable_bonus
 
     def calculate_verifier_reward(self, task: Task) -> float:
         """Calculate reward for each verifier."""
-        return self.k * task.cost / 2
+        return self.k * task.cost * self.z  # Using configurable verifier reward multiplier
 
     def process_validation(self, task: Task, solution: Any):
         """Process validation results and distribute rewards/penalties."""
