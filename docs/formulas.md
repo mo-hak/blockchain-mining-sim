@@ -104,7 +104,13 @@ Token Distribution:
 where \(\tau_m\) represents the tokens of miner \(m\).
 
 ## 9. Task Generation
-```
-Input Size = random(10, 100)
-Task Type = random choice from [Addition, Multiplication, Sorting, Searching]
-```
+Let \(\mathcal{T}\) be the set of task types and \(t\) be a generated task:
+
+Input size: \[n \sim U(10, 100) \cap \mathbb{N}\]
+
+Task type selection: \[t \in \mathcal{T} = \{Addition, Multiplication, Sorting, Searching\}\]
+
+where:
+- \(U(a,b)\) denotes uniform distribution over interval \([a,b]\)
+- \(\mathbb{N}\) denotes the set of natural numbers
+- Task type is selected with uniform probability \(P(t) = \frac{1}{|\mathcal{T}|} = \frac{1}{4}\)
