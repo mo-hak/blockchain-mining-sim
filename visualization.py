@@ -38,29 +38,31 @@ class Visualizer:
         for miner_id, scores in self.miner_scores_history.items():
             ax1.plot(scores, label=f'Miner {miner_id}')
         ax1.set_title('Miner Scores Over Time')
-        ax1.set_xlabel('Time')
+        ax1.set_xlabel('Task Iterations')
         ax1.set_ylabel('Score')
         ax1.legend()
 
         # Plot renewable energy usage
         ax2.plot(self.renewable_energy_history)
         ax2.set_title('Average Renewable Energy Usage')
-        ax2.set_xlabel('Time')
+        ax2.set_xlabel('Task Iterations')
         ax2.set_ylabel('Proportion')
 
         # Plot task success rate
         ax3.plot(self.task_success_history)
         ax3.set_title('Task Success Rate')
-        ax3.set_xlabel('Time')
+        ax3.set_xlabel('Task Iterations')
         ax3.set_ylabel('Success Rate')
 
         # Plot final token distribution
         miner_ids = list(self.token_distribution_history.keys())
         final_tokens = [history[-1] for history in self.token_distribution_history.values()]
-        ax4.bar(miner_ids, final_tokens)
+        ax4.bar(range(len(miner_ids)), final_tokens)
         ax4.set_title('Final Token Distribution')
         ax4.set_xlabel('Miner ID')
         ax4.set_ylabel('Tokens')
+        ax4.set_xticks(range(len(miner_ids)))
+        ax4.set_xticklabels([str(mid) for mid in miner_ids])
 
         plt.tight_layout()
         plt.savefig('simulation_results.png')
