@@ -70,3 +70,8 @@ You can modify the simulation parameters in `main.py`:
 - Number of tasks
 - Reward multiplier (k)
 - Task input sizes 
+
+
+
+you need to add supplementary paper where you will run multiple itewrations and show that the the results are dynamic and not biased.\
+either add a supplementary or if not available then add in appendix.
