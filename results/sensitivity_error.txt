@@ -1,0 +1,107 @@
+Matplotlib created a temporary cache directory at /var/folders/lz/tyhc88391sgcv4wx2mg8y1n80000gn/T/matplotlib-bis6xw6g because the default path (/Users/mohakgupta/.matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+Matplotlib is building the font cache; this may take a moment.
+
+======================================================================
+  BYZANTINE ERROR RATE SENSITIVITY
+======================================================================
+
+Using 6 Byzantine miners (30%) to show clearer effects
+With fault tolerance enabled, they'll still be down-weighted
+
+
+Testing Byzantine error rate: 10.0%
+
+Running 10 simulations for statistical analysis...
+  Run 1/10 complete: Success rate = 96.25%
+  Run 2/10 complete: Success rate = 96.00%
+  Run 3/10 complete: Success rate = 95.95%
+  Run 4/10 complete: Success rate = 95.40%
+  Run 5/10 complete: Success rate = 95.95%
+  Run 6/10 complete: Success rate = 96.50%
+  Run 7/10 complete: Success rate = 96.35%
+  Run 8/10 complete: Success rate = 97.30%
+  Run 9/10 complete: Success rate = 96.75%
+  Run 10/10 complete: Success rate = 95.95%
+
+=== Aggregated Results (10 runs) ===
+Success Rate: 96.24% ± 0.31% (95% CI)
+Useful Work Efficiency: 74.03% ± 0.24% (95% CI)
+
+Testing Byzantine error rate: 20.0%
+
+Running 10 simulations for statistical analysis...
+  Run 1/10 complete: Success rate = 96.05%
+  Run 2/10 complete: Success rate = 97.05%
+  Run 3/10 complete: Success rate = 95.55%
+  Run 4/10 complete: Success rate = 97.20%
+  Run 5/10 complete: Success rate = 96.30%
+  Run 6/10 complete: Success rate = 96.25%
+  Run 7/10 complete: Success rate = 94.80%
+  Run 8/10 complete: Success rate = 96.35%
+  Run 9/10 complete: Success rate = 96.20%
+  Run 10/10 complete: Success rate = 96.40%
+
+=== Aggregated Results (10 runs) ===
+Success Rate: 96.22% ± 0.40% (95% CI)
+Useful Work Efficiency: 74.01% ± 0.31% (95% CI)
+
+Testing Byzantine error rate: 30.0%
+
+Running 10 simulations for statistical analysis...
+  Run 1/10 complete: Success rate = 96.50%
+  Run 2/10 complete: Success rate = 96.70%
+  Run 3/10 complete: Success rate = 96.65%
+  Run 4/10 complete: Success rate = 96.95%
+  Run 5/10 complete: Success rate = 96.30%
+  Run 6/10 complete: Success rate = 96.70%
+  Run 7/10 complete: Success rate = 96.90%
+  Run 8/10 complete: Success rate = 96.80%
+  Run 9/10 complete: Success rate = 97.50%
+  Run 10/10 complete: Success rate = 96.55%
+
+=== Aggregated Results (10 runs) ===
+Success Rate: 96.75% ± 0.19% (95% CI)
+Useful Work Efficiency: 74.43% ± 0.15% (95% CI)
+
+Testing Byzantine error rate: 40.0%
+
+Running 10 simulations for statistical analysis...
+  Run 1/10 complete: Success rate = 96.90%
+  Run 2/10 complete: Success rate = 96.55%
+  Run 3/10 complete: Success rate = 96.75%
+  Run 4/10 complete: Success rate = 97.25%
+  Run 5/10 complete: Success rate = 96.40%
+  Run 6/10 complete: Success rate = 96.90%
+  Run 7/10 complete: Success rate = 96.55%
+  Run 8/10 complete: Success rate = 97.35%
+  Run 9/10 complete: Success rate = 97.00%
+  Run 10/10 complete: Success rate = 97.10%
+
+=== Aggregated Results (10 runs) ===
+Success Rate: 96.88% ± 0.18% (95% CI)
+Useful Work Efficiency: 74.52% ± 0.14% (95% CI)
+
+Testing Byzantine error rate: 50.0%
+
+Running 10 simulations for statistical analysis...
+  Run 1/10 complete: Success rate = 96.10%
+  Run 2/10 complete: Success rate = 96.20%
+  Run 3/10 complete: Success rate = 96.80%
+  Run 4/10 complete: Success rate = 96.90%
+  Run 5/10 complete: Success rate = 96.60%
+  Run 6/10 complete: Success rate = 96.30%
+  Run 7/10 complete: Success rate = 96.70%
+  Run 8/10 complete: Success rate = 97.10%
+  Run 9/10 complete: Success rate = 97.05%
+  Run 10/10 complete: Success rate = 96.25%
+
+=== Aggregated Results (10 runs) ===
+Success Rate: 96.60% ± 0.22% (95% CI)
+Useful Work Efficiency: 74.31% ± 0.17% (95% CI)
+
+=== Byzantine Error Rate Sensitivity Results ===
+Error Rate 10.0%: Success Rate = 96.24% ± 0.31%, Efficiency = 74.03%
+Error Rate 20.0%: Success Rate = 96.22% ± 0.40%, Efficiency = 74.01%
+Error Rate 30.0%: Success Rate = 96.75% ± 0.19%, Efficiency = 74.43%
+Error Rate 40.0%: Success Rate = 96.88% ± 0.18%, Efficiency = 74.52%
+Error Rate 50.0%: Success Rate = 96.60% ± 0.22%, Efficiency = 74.31%

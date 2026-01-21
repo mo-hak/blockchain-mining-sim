@@ -26,12 +26,23 @@ class Task:
         return [random.randint(1, 100) for _ in range(self.input_size)]
 
     def _calculate_cost(self) -> float:
-        """Calculate task cost based on time complexity and input size."""
+        """
+        Calculate task cost based on time complexity and input size.
+        
+        Per thesis Equation 1:
+        C(t) = 
+            - 0.5n  for Addition (linear complexity)
+            - 1.0n  for Multiplication (linear complexity)
+            - n²    for Sorting (quadratic approximation of O(n log n))
+            - 2.0n  for Searching (linear with comparison overhead)
+        
+        Where n = input_size ∈ [10, 100]
+        """
         complexity_map = {
-            TaskType.ADDITION: 0.5 * self.input_size,        # O(n)
-            TaskType.MULTIPLICATION: 1.0 * self.input_size,   # O(n)
-            TaskType.SORTING: self.input_size * (self.input_size),  # O(n log n) approximated
-            TaskType.SEARCHING: 2.0 * self.input_size,        # O(n)
+            TaskType.ADDITION: 0.5 * self.input_size,             # 0.5n
+            TaskType.MULTIPLICATION: 1.0 * self.input_size,       # 1.0n
+            TaskType.SORTING: self.input_size * self.input_size,  # n²
+            TaskType.SEARCHING: 2.0 * self.input_size,            # 2.0n
         }
         return complexity_map[self.task_type]
 

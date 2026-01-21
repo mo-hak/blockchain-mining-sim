@@ -1,0 +1,33 @@
+Matplotlib created a temporary cache directory at /var/folders/lz/tyhc88391sgcv4wx2mg8y1n80000gn/T/matplotlib-3g9b16r5 because the default path (/Users/mohakgupta/.matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+Matplotlib is building the font cache; this may take a moment.
+
+======================================================================
+  BASELINE RESULTS (20 runs for tight CIs)
+======================================================================
+
+
+Running 20 simulations for statistical analysis...
+  Run 1/20 complete: Success rate = 97.25%
+  Run 2/20 complete: Success rate = 98.05%
+  Run 3/20 complete: Success rate = 96.95%
+  Run 4/20 complete: Success rate = 97.30%
+  Run 5/20 complete: Success rate = 97.35%
+  Run 6/20 complete: Success rate = 97.30%
+  Run 7/20 complete: Success rate = 97.55%
+  Run 8/20 complete: Success rate = 97.60%
+  Run 9/20 complete: Success rate = 98.15%
+  Run 10/20 complete: Success rate = 97.70%
+  Run 11/20 complete: Success rate = 97.00%
+  Run 12/20 complete: Success rate = 98.00%
+  Run 13/20 complete: Success rate = 97.45%
+  Run 14/20 complete: Success rate = 97.60%
+  Run 15/20 complete: Success rate = 97.95%
+  Run 16/20 complete: Success rate = 97.40%
+  Run 17/20 complete: Success rate = 97.60%
+  Run 18/20 complete: Success rate = 97.55%
+  Run 19/20 complete: Success rate = 97.30%
+  Run 20/20 complete: Success rate = 97.75%
+
+=== Aggregated Results (20 runs) ===
+Success Rate: 97.54% ± 0.14% (95% CI)
+Useful Work Efficiency: 75.03% ± 0.11% (95% CI)

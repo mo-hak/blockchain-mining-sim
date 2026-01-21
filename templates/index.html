@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain Mining Simulation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⛏️ Blockchain Mining Simulation</h1>
+            <p>Interactive simulation of blockchain mining with Byzantine fault tolerance and renewable energy incentives</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Configuration Panel -->
+            <div class="config-panel">
+                <h2>Configuration Parameters</h2>
+                
+                <div class="config-section">
+                    <h3>Basic Settings</h3>
+                    <div class="input-group">
+                        <label for="num_miners">
+                            Number of Miners
+                            <span class="tooltip" data-tooltip="Total number of miners in the network">ℹ️</span>
+                        </label>
+                        <input type="number" id="num_miners" value="20" min="5" max="100">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="num_tasks">
+                            Number of Tasks
+                            <span class="tooltip" data-tooltip="Total computational tasks to be distributed">ℹ️</span>
+                        </label>
+                        <input type="number" id="num_tasks" value="1000" min="100" max="10000">
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h3>Reward Parameters</h3>
+                    <div class="input-group">
+                        <label for="reward_multiplier">
+                            Reward Multiplier (k)
+                            <span class="tooltip" data-tooltip="Base reward scaling factor">ℹ️</span>
+                        </label>
+                        <input type="number" id="reward_multiplier" value="1.0" min="0.1" max="10" step="0.1">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="verifier_reward_multiplier">
+                            Verifier Reward Multiplier (z)
+                            <span class="tooltip" data-tooltip="Reward multiplier for task verifiers">ℹ️</span>
+                        </label>
+                        <input type="number" id="verifier_reward_multiplier" value="0.5" min="0.1" max="5" step="0.1">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="renewable_energy_alpha">
+                            Renewable Energy (α)
+                            <span class="tooltip" data-tooltip="Per thesis: α_m ∈ [0, 0.5]. Set a fixed value for all miners, or leave as 'random' for random α per miner. Higher α = more green bonus reward.">ℹ️</span>
+                        </label>
+                        <select id="renewable_energy_alpha">
+                            <option value="random">Random (0 to 0.5)</option>
+                            <option value="0">0 (No renewable energy)</option>
+                            <option value="0.1">0.1 (10% renewable)</option>
+                            <option value="0.2">0.2 (20% renewable)</option>
+                            <option value="0.3">0.3 (30% renewable)</option>
+                            <option value="0.4">0.4 (40% renewable)</option>
+                            <option value="0.5">0.5 (50% renewable - max)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h3>Task Parameters</h3>
+                    <div class="input-group">
+                        <label for="input_size_min">
+                            Min Input Size
+                            <span class="tooltip" data-tooltip="Minimum size of task input data">ℹ️</span>
+                        </label>
+                        <input type="number" id="input_size_min" value="10" min="1" max="50">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="input_size_max">
+                            Max Input Size
+                            <span class="tooltip" data-tooltip="Maximum size of task input data">ℹ️</span>
+                        </label>
+                        <input type="number" id="input_size_max" value="100" min="50" max="1000">
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h3>Byzantine Fault Tolerance</h3>
+                    <div class="input-group">
+                        <label for="max_byzantine_miners">
+                            Number of Byzantine Miners
+                            <span class="tooltip" data-tooltip="Exact number of Byzantine (malicious) miners in the network">ℹ️</span>
+                        </label>
+                        <input type="number" id="max_byzantine_miners" value="3" min="0" max="15">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="byzantine_error_rate">
+                            Byzantine Error Rate
+                            <span class="tooltip" data-tooltip="Thesis Eq.3: How often Byzantine miners produce wrong results (0.3 = 30% per thesis)">ℹ️</span>
+                        </label>
+                        <input type="number" id="byzantine_error_rate" value="0.3" min="0.1" max="0.9" step="0.05">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="byzantine_threshold">
+                            Detection Threshold
+                            <span class="tooltip" data-tooltip="Error rate threshold to flag miners as Byzantine">ℹ️</span>
+                        </label>
+                        <input type="number" id="byzantine_threshold" value="0.2" min="0.1" max="0.9" step="0.05">
+                    </div>
+
+                    <div class="input-group checkbox-group">
+                        <label for="fault_tolerance_enabled">
+                            <input type="checkbox" id="fault_tolerance_enabled" checked>
+                            Enable Fault Tolerance (Thesis Eq.4)
+                            <span class="tooltip" data-tooltip="When ON: System adapts and reduces Byzantine selection (realistic). When OFF: Equal selection for all miners (shows raw Byzantine impact).">ℹ️</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button id="runSimulation" class="btn btn-primary">Run Simulation</button>
+                    <button id="resetConfig" class="btn btn-secondary">Reset to Default</button>
+                </div>
+
+                <!-- Progress Section -->
+                <div id="progressSection" class="progress-section" style="display: none;">
+                    <h3>Simulation Progress</h3>
+                    <div class="progress-bar">
+                        <div id="progressBar" class="progress-fill"></div>
+                    </div>
+                    <div class="progress-info">
+                        <span id="progressText">0 / 0 tasks completed</span>
+                        <span id="successRate">Success Rate: 0%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Panel -->
+            <div class="results-panel">
+                <h2>Simulation Results</h2>
+                
+                <div id="loadingMessage" class="loading-message">
+                    Configure parameters and run the simulation to see results
+                </div>
+
+                <div id="resultsContent" style="display: none;">
+                    <!-- Summary Statistics -->
+                    <div class="summary-stats">
+                        <div class="stat-card">
+                            <h3>Total Tasks</h3>
+                            <div class="stat-value" id="statTotalTasks">0</div>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Successful Tasks</h3>
+                            <div class="stat-value" id="statSuccessfulTasks">0</div>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Success Rate</h3>
+                            <div class="stat-value" id="statSuccessRate">0%</div>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Byzantine Miners</h3>
+                            <div class="stat-value" id="statByzantineCount">0</div>
+                        </div>
+                    </div>
+
+                    <!-- Visualization Charts -->
+                    <div class="charts-container">
+                        <div class="chart-wrapper">
+                            <h3>Miner Scores Over Time</h3>
+                            <div id="scoresChart"></div>
+                        </div>
+
+                        <div class="chart-wrapper">
+                            <h3>Token Distribution</h3>
+                            <div id="tokensChart"></div>
+                        </div>
+
+                        <div class="chart-wrapper">
+                            <h3>Task Success Rate</h3>
+                            <div id="successRateChart"></div>
+                        </div>
+
+                        <div class="chart-wrapper">
+                            <h3>Average Renewable Energy Usage</h3>
+                            <div id="renewableEnergyChart"></div>
+                        </div>
+                    </div>
+
+                    <!-- Miner Details Table -->
+                    <div class="miner-details">
+                        <h3>Detailed Miner Statistics</h3>
+                        <div class="table-container">
+                            <table id="minersTable">
+                                <thead>
+                                    <tr>
+                                        <th>Miner ID</th>
+                                        <th>Score</th>
+                                        <th>Renewable Energy</th>
+                                        <th>Tasks Completed</th>
+                                        <th>Error Rate</th>
+                                        <th>Tokens</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="minersTableBody">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
+
+

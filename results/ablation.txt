@@ -1,0 +1,68 @@
+Matplotlib created a temporary cache directory at /var/folders/lz/tyhc88391sgcv4wx2mg8y1n80000gn/T/matplotlib-spuqnveu because the default path (/Users/mohakgupta/.matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+Matplotlib is building the font cache; this may take a moment.
+
+======================================================================
+  ABLATION STUDY
+======================================================================
+
+
+1. Full Model (with renewable bonus + fault tolerance)
+
+Running 10 simulations for statistical analysis...
+  Run 1/10 complete: Success rate = 97.25%
+  Run 2/10 complete: Success rate = 98.05%
+  Run 3/10 complete: Success rate = 96.95%
+  Run 4/10 complete: Success rate = 97.30%
+  Run 5/10 complete: Success rate = 97.35%
+  Run 6/10 complete: Success rate = 97.30%
+  Run 7/10 complete: Success rate = 97.55%
+  Run 8/10 complete: Success rate = 97.60%
+  Run 9/10 complete: Success rate = 98.15%
+  Run 10/10 complete: Success rate = 97.70%
+
+=== Aggregated Results (10 runs) ===
+Success Rate: 97.52% ± 0.22% (95% CI)
+Useful Work Efficiency: 75.02% ± 0.17% (95% CI)
+
+2. No Renewable Energy Bonus (α=0 for all)
+
+Running 10 simulations for statistical analysis...
+  Run 1/10 complete: Success rate = 96.80%
+  Run 2/10 complete: Success rate = 98.15%
+  Run 3/10 complete: Success rate = 96.85%
+  Run 4/10 complete: Success rate = 97.35%
+  Run 5/10 complete: Success rate = 96.90%
+  Run 6/10 complete: Success rate = 97.25%
+  Run 7/10 complete: Success rate = 97.30%
+  Run 8/10 complete: Success rate = 97.40%
+  Run 9/10 complete: Success rate = 98.15%
+  Run 10/10 complete: Success rate = 97.65%
+
+=== Aggregated Results (10 runs) ===
+Success Rate: 97.38% ± 0.29% (95% CI)
+Useful Work Efficiency: 74.91% ± 0.22% (95% CI)
+
+3. No Fault Tolerance (uniform selection) - with 6 Byzantine miners
+
+Running 10 simulations for statistical analysis...
+  Run 1/10 complete: Success rate = 89.80%
+  Run 2/10 complete: Success rate = 91.00%
+  Run 3/10 complete: Success rate = 89.65%
+  Run 4/10 complete: Success rate = 89.60%
+  Run 5/10 complete: Success rate = 90.20%
+  Run 6/10 complete: Success rate = 90.90%
+  Run 7/10 complete: Success rate = 90.35%
+  Run 8/10 complete: Success rate = 90.85%
+  Run 9/10 complete: Success rate = 90.00%
+  Run 10/10 complete: Success rate = 89.30%
+
+=== Aggregated Results (10 runs) ===
+Success Rate: 90.17% ± 0.35% (95% CI)
+Useful Work Efficiency: 69.36% ± 0.27% (95% CI)
+
+=== Ablation Study Summary ===
+Full Model: Success = 97.52%, Efficiency = 75.02%
+No Green Bonus: Success = 97.38%, Efficiency = 74.91%
+No Fault Tolerance (30% Byzantine): Success = 90.17%, Efficiency = 69.36%
+
+Impact of Fault Tolerance: 7.36% improvement

@@ -1,0 +1,104 @@
+Matplotlib created a temporary cache directory at /var/folders/lz/tyhc88391sgcv4wx2mg8y1n80000gn/T/matplotlib-i3tc41nj because the default path (/Users/mohakgupta/.matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+Matplotlib is building the font cache; this may take a moment.
+
+======================================================================
+  NUMBER OF VERIFIERS SENSITIVITY
+======================================================================
+
+
+Testing V = 1 verifiers
+
+Running 10 simulations for statistical analysis...
+  Run 1/10 complete: Success rate = 97.20%
+  Run 2/10 complete: Success rate = 98.00%
+  Run 3/10 complete: Success rate = 98.05%
+  Run 4/10 complete: Success rate = 97.75%
+  Run 5/10 complete: Success rate = 97.65%
+  Run 6/10 complete: Success rate = 97.05%
+  Run 7/10 complete: Success rate = 97.40%
+  Run 8/10 complete: Success rate = 97.35%
+  Run 9/10 complete: Success rate = 97.50%
+  Run 10/10 complete: Success rate = 97.65%
+
+=== Aggregated Results (10 runs) ===
+Success Rate: 97.56% ± 0.19% (95% CI)
+Useful Work Efficiency: 88.69% ± 0.17% (95% CI)
+
+Testing V = 3 verifiers
+
+Running 10 simulations for statistical analysis...
+  Run 1/10 complete: Success rate = 97.25%
+  Run 2/10 complete: Success rate = 98.05%
+  Run 3/10 complete: Success rate = 96.95%
+  Run 4/10 complete: Success rate = 97.30%
+  Run 5/10 complete: Success rate = 97.35%
+  Run 6/10 complete: Success rate = 97.30%
+  Run 7/10 complete: Success rate = 97.55%
+  Run 8/10 complete: Success rate = 97.60%
+  Run 9/10 complete: Success rate = 98.15%
+  Run 10/10 complete: Success rate = 97.70%
+
+=== Aggregated Results (10 runs) ===
+Success Rate: 97.52% ± 0.22% (95% CI)
+Useful Work Efficiency: 75.02% ± 0.17% (95% CI)
+
+Testing V = 5 verifiers
+
+Running 10 simulations for statistical analysis...
+  Run 1/10 complete: Success rate = 97.40%
+  Run 2/10 complete: Success rate = 97.60%
+  Run 3/10 complete: Success rate = 96.60%
+  Run 4/10 complete: Success rate = 97.80%
+  Run 5/10 complete: Success rate = 97.05%
+  Run 6/10 complete: Success rate = 97.15%
+  Run 7/10 complete: Success rate = 98.05%
+  Run 8/10 complete: Success rate = 97.30%
+  Run 9/10 complete: Success rate = 97.40%
+  Run 10/10 complete: Success rate = 97.05%
+
+=== Aggregated Results (10 runs) ===
+Success Rate: 97.34% ± 0.24% (95% CI)
+Useful Work Efficiency: 64.89% ± 0.16% (95% CI)
+
+Testing V = 7 verifiers
+
+Running 10 simulations for statistical analysis...
+  Run 1/10 complete: Success rate = 97.35%
+  Run 2/10 complete: Success rate = 97.65%
+  Run 3/10 complete: Success rate = 96.80%
+  Run 4/10 complete: Success rate = 96.85%
+  Run 5/10 complete: Success rate = 97.40%
+  Run 6/10 complete: Success rate = 96.70%
+  Run 7/10 complete: Success rate = 97.45%
+  Run 8/10 complete: Success rate = 97.30%
+  Run 9/10 complete: Success rate = 97.55%
+  Run 10/10 complete: Success rate = 97.55%
+
+=== Aggregated Results (10 runs) ===
+Success Rate: 97.26% ± 0.20% (95% CI)
+Useful Work Efficiency: 57.21% ± 0.12% (95% CI)
+
+Testing V = 9 verifiers
+
+Running 10 simulations for statistical analysis...
+  Run 1/10 complete: Success rate = 97.50%
+  Run 2/10 complete: Success rate = 97.45%
+  Run 3/10 complete: Success rate = 97.00%
+  Run 4/10 complete: Success rate = 97.00%
+  Run 5/10 complete: Success rate = 97.70%
+  Run 6/10 complete: Success rate = 97.25%
+  Run 7/10 complete: Success rate = 97.15%
+  Run 8/10 complete: Success rate = 97.00%
+  Run 9/10 complete: Success rate = 97.50%
+  Run 10/10 complete: Success rate = 97.70%
+
+=== Aggregated Results (10 runs) ===
+Success Rate: 97.32% ± 0.17% (95% CI)
+Useful Work Efficiency: 51.22% ± 0.09% (95% CI)
+
+=== Number of Verifiers Sensitivity Results ===
+V = 1: Success Rate = 97.56% ± 0.19%, Efficiency = 88.69%
+V = 3: Success Rate = 97.52% ± 0.22%, Efficiency = 75.02%
+V = 5: Success Rate = 97.34% ± 0.24%, Efficiency = 64.89%
+V = 7: Success Rate = 97.26% ± 0.20%, Efficiency = 57.21%
+V = 9: Success Rate = 97.32% ± 0.17%, Efficiency = 51.22%
